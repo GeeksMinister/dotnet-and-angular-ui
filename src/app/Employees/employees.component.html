@@ -1,0 +1,71 @@
+<div class="row pt-5 pb-2 pe-3 m-0 gy-5">
+    <h4 class="text-secondary fw-bold text-sm-start ms-2">
+      Registered Employees (<span class="h6 text-primary small">{{ employees.length }})</span>
+    </h4>
+    <div class="text-end ">
+      <a routerLink="addEmployee" class="btn btn-success fw-bold">Assgin Employee</a>
+    </div>
+</div>
+  
+<em class="h3 ms-5" *ngIf="employees.length === 0; else loaded">Loading ......</em>
+<ng-template #loaded>
+
+  <div class="container-fluid mt-0 mb-3 p-3 overflow-auto">
+    <table class="table table-bordered table-striped align-middle text-center">
+      <thead class="table-dark">
+        <tr class="border-1 border-dark">
+          <th>Employee</th>
+          <th>Gender</th>
+          <th>Address</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Salary</th>
+          <th>Department</th>
+          <th>Changes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="border-1 border-dark" *ngFor="let emp of employees">
+
+          <td class="col-2">
+            <a class="btn btn-link btn-outline-info p-1 rounded-pill 
+            text-opacity-100 text-primary fw-bold text-decoration-none " 
+            routerLink="employeeDetails" >{{ getFullName(emp) }}</a>
+          </td>
+          
+          <td class="col-1">{{ emp.gender }}</td>
+          <td class="col-2">{{ emp.address }}</td>
+          <td class="col-2">{{ emp.email }}</td>
+          <td class="col-1">{{ emp.phone }}</td>
+          <td class="col-1">{{ emp.salary }}</td>
+          <td class="col-1">{{ emp.department?.departmentName }}</td>
+          <td class="col-1">
+            <div class="row justify-content-evenly">
+              <a routerLink="updateEmployee" class="btn btn-warning mb-1 mt-1 p-1 w-auto rounded-pill" >Update</a>
+              <a href="" class="btn btn-danger mb-1 mt-1 p-1 w-auto rounded-pill">Delete&nbsp;</a>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</ng-template>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="doSomething()">Do Something</button>
+      </div>
+    </div>
+  </div>
+</div>
+  
