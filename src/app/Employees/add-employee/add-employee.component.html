@@ -1,5 +1,4 @@
-
-<h2 class="text-primary m-4 text-success gy-5">Add Employee</h2>
+<h2 class="text-primary fw-bold m-4 text-success gy-5">Add Employee</h2>
 
 <div class="container-sm">
     <form method="post" class="mt-5 fw-bold w-auto shadow">
@@ -52,16 +51,10 @@
                 <div class="col-auto">
                     <label for="department">Department</label>
                     <select name="department" class="form-select" [(ngModel)]="newEmployee.departmentId">
-                        <option value="2BF31C19-8509-4AA8-A31E-8B885D41BD8A">Marketing</option>
-                        <option>Development</option>
-                        <option>Services</option>
-                        <option>Engineering</option>
-                        <option>Accounting</option>
-                        <option>Sales</option>
+                        <option *ngFor="let dep of departments" value={{dep.guid}}>{{dep.departmentName}}</option>
                     </select>
                 </div>
             </div>
-
 
             <div class="row justify-content-evenly mt-5 mb-5 gy-3 ">
                 <button type="submit" (click)="addEmployee()"
@@ -69,6 +62,7 @@
                 <button type="reset" class="btn btn-secondary col-sm-3 col-md-3 col-lg-3 col-xl-2">Reset</button>
                 <a routerLink="" class="btn btn-primary col-sm-3 col-md-3 col-lg-3 col-xl-2">Cancel</a>
             </div>
+            
         </div>
     </form>
 </div>

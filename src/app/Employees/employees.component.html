@@ -41,8 +41,8 @@
           <td class="col-1">{{ emp.department?.departmentName }}</td>
           <td class="col-1">
             <div class="row justify-content-evenly">
-              <a routerLink="updateEmployee" class="btn btn-warning mb-1 mt-1 p-1 w-auto rounded-pill" >Update</a>
-              <a href="" class="btn btn-danger mb-1 mt-1 p-1 w-auto rounded-pill">Delete&nbsp;</a>
+              <a routerLink="updateEmployee/{{emp.guid}}" class="btn btn-warning mb-1 mt-1 p-1 w-auto rounded-pill" >Update</a>
+              <button type="submit" (click)="deleteEmployee(emp)" class="btn btn-danger mb-1 mt-1 p-1 w-auto rounded-pill">Delete&nbsp;</button>
             </div>
           </td>
         </tr>
