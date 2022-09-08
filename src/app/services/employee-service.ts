@@ -18,7 +18,7 @@ export class EmployeeService {
         return this.http.get<Employee[]>(environment.apiUrl + this.url);
     }
 
-    public getEmployeesById(guid: string | null): Observable<Employee> {
+    public getEmployeeById(guid: string | null): Observable<Employee> {
         return this.http.get<Employee>(
             environment.apiUrl + this.url + '/' + guid);
     }

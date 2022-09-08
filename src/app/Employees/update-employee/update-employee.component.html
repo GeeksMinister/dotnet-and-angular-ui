@@ -1,13 +1,16 @@
 <h2 class="text-warning fw-bold m-4 text-success gy-5">Add Employee</h2>
 
-<div class="container-sm">
-    <form method="post" class="mt-5 fw-bold w-auto shadow">
+<div class="container-sm mt-5">
+    <div class="col-md-6 col-lg-4">
+        <label for="guid">Guid</label>
+        <input name="guid" class="form-control" [(ngModel)]="updatedEmployee.guid" disabled/>
+    </div>
+    <form method="post" class=" fw-bold w-auto shadow">
         <div class="row card card-body bg-light shadow pb-3 ">
             <div class="row gy-3 ">
                 <div class="col-md-6 col-lg-4">
                     <label for="firstName">First Name</label>
                     <input name="firstName" class="form-control" [(ngModel)]="updatedEmployee.firstName"/>
-                    
                 </div>
                     
                 <div class="col-md-6 col-lg-4">

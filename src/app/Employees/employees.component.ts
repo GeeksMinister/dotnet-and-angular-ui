@@ -10,7 +10,7 @@ declare var window: any;
   styleUrls: ['./employees.component.css']
 })
 export class EmployeesComponent implements OnInit {
-  constructor(private employeeService: EmployeeService, private _router: Router) { }
+  constructor(private _employeeServie: EmployeeService, private _router: Router) { }
 
   @Output() employeesUpdated = new EventEmitter<Employee[]>();
   formModal: any;
@@ -21,9 +21,9 @@ export class EmployeesComponent implements OnInit {
   getFullName = (emp: Employee) => emp.firstName + ' ' + emp.lastName;
 
   ngOnInit() {
-    this.employeeService.getAllEmployees()
-    .subscribe((result: Employee[]) => (this.employees = result));
-
+    this._employeeServie.getAllEmployees()
+      .subscribe((result: Employee[]) => (this.employees = result));
+    this.employeeToEdit.firstName = '';
     this.formModal = new window.bootstrap.Modal(
       document.getElementById("exampleModal")
     );
@@ -32,7 +32,7 @@ export class EmployeesComponent implements OnInit {
   initNewEmployee() {
     this.employeeToEdit = new Employee();
   }
-  
+
   updateEmployeeList(employees: Employee[]) {
     this.employees = employees;
   }
@@ -42,18 +42,15 @@ export class EmployeesComponent implements OnInit {
   }
 
   deleteEmployee(employee: Employee) {
-    this.employeeService.deleteEmployee(employee)
-    .subscribe((employees: Employee[]) => this.employeesUpdated.emit(employees));
+    this._employeeServie.deleteEmployee(employee)
+      .subscribe((employees: Employee[]) => this.employeesUpdated.emit(employees));
 
     this._router.navigateByUrl('').then(() => { window.location.reload() });
   }
 
-
-
-
-
-  openModal() { this.formModal.show(); }
-  doSomething() { this.formModal.hide(); }
-
+  openModal(emp: Employee) {
+    this.employeeToEdit = emp;
+    this.formModal.show();
+  }
 
 }

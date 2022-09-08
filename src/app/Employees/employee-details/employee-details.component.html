@@ -1,1 +1,69 @@
-<p>employee-details works!</p>
+<em style="color: rgb(0, 123, 255); position: absolute; top: 20%;" class="h3 px-5"
+ *ngIf="employee?.guid === undefined else loaded">Loading .......</em>
+
+<ng-template #loaded>
+    <div class="d-flex overflow-auto shadow-lg" style="height: 55vh">
+        <table class="table table-striped table-details m-0">
+            <tbody class="border-2 border-secondary fw-bold text-center align-middle h5 ">
+                <tr class="border-2">
+                    <th class="table-dark">Id</th>
+                    <td>{{employee.guid}}</td>
+                </tr>
+                <tr class="border-2">
+                    <th class="table-dark">First Name</th>
+                    <td>{{employee.firstName}}</td>
+                </tr>
+                <tr class="border-2">
+                    <th class="table-dark">Last Name</th>
+                    <td>{{employee.lastName}}</td>
+                </tr>
+                <tr class="border-2">
+                    <th class="table-dark">Gender</th>
+                    <td>{{employee.gender}}</td>
+                </tr>
+                <tr class="border-2">
+                    <th class="table-dark">Address</th>
+                    <td>{{employee.address}}</td>
+                </tr>
+                <tr class="border-2">
+                    <th class="table-dark">Email</th>
+                    <td>{{employee.email}}</td>
+                </tr>
+                <tr class="border-2">
+                    <th class="table-dark">Phone</th>
+                    <td>{{employee.phone}}</td>
+                </tr>
+                <tr class="border-2">
+                    <th class="table-dark">Salary</th>
+                    <td>{{employee.salary}}</td>
+                </tr>
+                <tr class="border-2">
+                    <th class="table-dark">Department</th>
+                    <td>{{employee.department?.departmentName}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="row-cols-6 mt-5 text-center">
+        <a [routerLink]="['/updateEmployee/', employee.guid]" class="btn btn-warning p-2 m-3 fw-bold">Update</a>
+        <button (click)="deleteModal()"  class="btn btn-danger p-2 m-3 fw-bold">Delete</button>
+        <a routerLink="" class="btn btn-primary p-2 m-3">Back</a>
+    </div>
+</ng-template>
+
+
+<div class="modal fade" id="exampleModal" tabindex="1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-warning m-auto fw-bold" id="exampleModalLabel">Do you want to remove this employee ?</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-footer row justify-content-evenly">
+          <button type="button" class="btn btn-secondary col-auto " data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-danger col-auto " 
+          (click)="deleteEmployee()">Confirm</button>
+        </div>
+      </div>
+    </div>
+  </div>
