@@ -2,7 +2,7 @@
 
 <div class="container-sm mt-5">
     <div class="col-md-6 col-lg-4">
-        <label for="guid">Guid</label>
+        <label for="guid">Id</label>
         <input name="guid" class="form-control" [(ngModel)]="updatedEmployee.guid" disabled/>
     </div>
     <form method="post" class=" fw-bold w-auto shadow">
@@ -58,7 +58,6 @@
                     </select>
                 </div>
             </div>
-
 
             <div class="row justify-content-evenly mt-5 mb-5 gy-3 ">
                 <button type="submit" (click)="updateEmployee()"

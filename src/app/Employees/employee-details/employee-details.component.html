@@ -1,13 +1,13 @@
-<em style="color: rgb(0, 123, 255); position: absolute; top: 20%;" class="h3 px-5"
+<em style="color: rgb(0, 123, 255); " class="h3 px-5"
  *ngIf="employee?.guid === undefined else loaded">Loading .......</em>
 
 <ng-template #loaded>
-    <div class="d-flex overflow-auto shadow-lg" style="height: 55vh">
+    <div class="d-flex overflow-auto shadow-lg m-auto" style="height: 55vh; max-width: 75rem;">
         <table class="table table-striped table-details m-0">
             <tbody class="border-2 border-secondary fw-bold text-center align-middle h5 ">
                 <tr class="border-2">
                     <th class="table-dark">Id</th>
-                    <td>{{employee.guid}}</td>
+                    <td class="border-top border-dark border-1">{{employee.guid}}</td>
                 </tr>
                 <tr class="border-2">
                     <th class="table-dark">First Name</th>
@@ -52,14 +52,14 @@
 </ng-template>
 
 
-<div class="modal fade" id="exampleModal" tabindex="1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title text-warning m-auto fw-bold" id="exampleModalLabel">Do you want to remove this employee ?</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
         </div>
-        <div class="modal-footer row justify-content-evenly">
+        <div class="modal-footer border-top-0 row justify-content-evenly">
           <button type="button" class="btn btn-secondary col-auto " data-bs-dismiss="modal">Close</button>
           <button type="button" class="btn btn-danger col-auto " 
           (click)="deleteEmployee()">Confirm</button>

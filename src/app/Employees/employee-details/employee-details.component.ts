@@ -12,6 +12,7 @@ declare var window: any;
   templateUrl: './employee-details.component.html',
   styleUrls: ['./employee-details.component.css']
 })
+
 export class EmployeeDetailsComponent implements OnInit {
   
   @Input() employee: Employee = new Employee();
@@ -44,10 +45,6 @@ export class EmployeeDetailsComponent implements OnInit {
 
     this._router.navigateByUrl('').then(() => { window.location.reload() });
   }
-
-  deleteModal() {
-
-    this.formModal.show();
-    }
+  deleteModal() { this.formModal.show(); }
 
 }

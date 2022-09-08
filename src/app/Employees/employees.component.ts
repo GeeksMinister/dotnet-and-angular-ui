@@ -16,7 +16,7 @@ export class EmployeesComponent implements OnInit {
   formModal: any;
 
   title = 'Employees';
-  employees: Employee[] = [];
+  employees?: Employee[];
   employeeToEdit: Employee = new Employee();
   getFullName = (emp: Employee) => emp.firstName + ' ' + emp.lastName;
 

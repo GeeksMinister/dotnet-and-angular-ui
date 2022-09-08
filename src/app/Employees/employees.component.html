@@ -1,17 +1,17 @@
 <div class="row pt-5 pb-2 pe-3 m-0 gy-5">
     <h4 class="text-secondary fw-bold text-sm-start ms-2">
-      Registered Employees (<span class="h6 text-primary small">{{ employees.length }}</span>)
+      Registered Employees (<span class="h6 text-primary small">{{ employees?.length }}</span>)
     </h4>
     <div class="text-end ">
       <a routerLink="addEmployee" class="btn btn-success fw-bold">Assgin Employee</a>
     </div>
 </div>
   
-<em style="color: rgb(0, 123, 255); position: absolute; top: 40%;" class="h3" 
-*ngIf="employees[0]?.firstName === undefined; else loaded">Loading ......</em>
+<em style="color: rgb(0, 123, 255); position: absolute; left: 20%; top: 35%;" class="h3" 
+*ngIf="employees === undefined; else loaded">Loading ......</em>
 
 <ng-template #loaded >
-  <em class="h3 m-5 text-danger"*ngIf="employees.length === 0 else received">
+  <em class="h3 m-5 text-danger"*ngIf="employees?.length === 0 else received">
     No Employee Was Found or Returned From Database</em>
 </ng-template>
 
@@ -47,7 +47,6 @@
           <td class="col-1">{{ emp.department?.departmentName }}</td>
           <td class="col-1">
             <div class="row justify-content-evenly">
-              <!-- (click)="deleteEmployee(emp)" -->
               <a routerLink="updateEmployee/{{emp.guid}}" 
               class="btn btn-warning mb-1 mt-1 p-1 w-auto rounded-pill" >Update</a>
               <button type="submit" (click)="openModal(emp)"  
@@ -60,12 +59,12 @@
   </div>
 </ng-template>
 
-<div class="modal fade" id="exampleModal" tabindex="1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title text-warning m-auto fw-bold" id="exampleModalLabel">Do you want to remove this employee ?</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
       </div>
       <div class="modal-body">
         <div class="container-fluid">
@@ -88,7 +87,7 @@
         </table>
         </div>
       </div>
-      <div class="modal-footer row justify-content-evenly">
+      <div class="modal-footer border-top-0 row justify-content-evenly">
         <button type="button" class="btn btn-secondary col-auto " data-bs-dismiss="modal">Close</button>
         <button type="button" class="btn btn-danger col-auto " 
         (click)="deleteEmployee(employeeToEdit)">Confirm</button>
