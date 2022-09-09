@@ -7,8 +7,8 @@
     </div>
 </div>
   
-<em style="color: rgb(0, 123, 255); position: absolute; left: 20%; top: 35%;" class="h3" 
-*ngIf="employees === undefined; else loaded">Loading ......</em>
+<em style="color: rgb(0, 123, 255); position: relative; left: 20%; top: 35%;" class="h4" 
+*ngIf="employees === undefined; else loaded">Requesting data ......</em>
 
 <ng-template #loaded >
   <em class="h3 m-5 text-danger"*ngIf="employees?.length === 0 else received">

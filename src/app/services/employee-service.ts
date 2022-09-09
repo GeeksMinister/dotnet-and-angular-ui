@@ -4,6 +4,8 @@ import { Injectable } from "@angular/core";
 import { environment } from "src/environments/environment";
 import { Observable } from "rxjs";
 import { Department } from "../models/department";
+import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpResponse,
+         HttpErrorResponse } from '@angular/common/http';
 
 @Injectable({
     providedIn: 'root'

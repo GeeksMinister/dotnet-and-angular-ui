@@ -1,26 +1,36 @@
+<style>
+    input.ng-invalid.ng-dirty, select.ng-invalid.ng-dirty,
+    .ng-submitted input.ng-invalid, .ng-submitted select.ng-invalid {
+        border: rgba(255, 0, 0, 0.785) 2px dashed;
+    }
+</style>
+
 <h2 class="text-warning fw-bold m-4 text-success gy-5">Add Employee</h2>
 
-<div class="container-sm mt-5">
+<div class="container-sm mt-5 fw-bold">
     <div class="col-md-6 col-lg-4">
         <label for="guid">Id</label>
-        <input name="guid" class="form-control" [(ngModel)]="updatedEmployee.guid" disabled/>
+        <input name="guid" class="form-control fw-bold" [(ngModel)]="updatedEmployee.guid" disabled/>
     </div>
-    <form method="post" class=" fw-bold w-auto shadow">
+    <form [formGroup]="reactiveForm" (ngSubmit)="updateEmployee()" class="w-auto shadow">
         <div class="row card card-body bg-light shadow pb-3 ">
             <div class="row gy-3 ">
                 <div class="col-md-6 col-lg-4">
                     <label for="firstName">First Name</label>
-                    <input name="firstName" class="form-control" [(ngModel)]="updatedEmployee.firstName"/>
+                    <input name="firstName" class="form-control" 
+                    formControlName="firstName" [(ngModel)]="updatedEmployee.firstName"/>
                 </div>
                     
                 <div class="col-md-6 col-lg-4">
                     <label for="lastName">Last Name</label>
-                    <input name="lastName" class="form-control" [(ngModel)]="updatedEmployee.lastName" />
+                    <input name="lastName" class="form-control" 
+                    formControlName="lastName" [(ngModel)]="updatedEmployee.lastName" />
                 </div>
 
                 <div class="col-auto">
                     <label for="gender">Gender</label>
-                    <select name="gender" class="form-select" [(ngModel)]="updatedEmployee.gender">
+                    <select name="gender" class="form-select" 
+                    formControlName="gender" [(ngModel)]="updatedEmployee.gender">
                         <option>Male</option>
                         <option>Female</option>
                         <option>Other</option>
@@ -31,36 +41,41 @@
             <div class="row gy-3">
                 <div class="col-md-6 col-lg-4">
                     <label for="email">Email</label>
-                    <input name="email" class="form-control" [(ngModel)]="updatedEmployee.email"/>
+                    <input name="email" class="form-control" 
+                    formControlName="email" [(ngModel)]="updatedEmployee.email"/>
                 </div>
 
                 <div class="col-md-6 col-lg-4">
                     <label for="phone">Phone</label>
-                    <input name="phone" class="form-control" [(ngModel)]="updatedEmployee.phone"/>
+                    <input name="phone" class="form-control" 
+                    formControlName="phone" [(ngModel)]="updatedEmployee.phone"/>
                 </div>
 
                 <div class="col-md-6 col-lg-4">
                     <label for="address">Address</label>
-                    <input name="address" class="form-control" [(ngModel)]="updatedEmployee.address"/>
+                    <input name="address" class="form-control" 
+                    formControlName="address" [(ngModel)]="updatedEmployee.address"/>
                 </div>
             </div>
             
             <div class="row gy-3 mb-3 justify-content-evenly">
                 <div class="col-auto">
                     <label for="salary">Salary</label>
-                    <input name="salary" type="number" class="form-control" [(ngModel)]="updatedEmployee.salary"/>
+                    <input name="salary" type="number" class="form-control" 
+                    formControlName="salary" [(ngModel)]="updatedEmployee.salary"/>
                 </div>
 
                 <div class="col-auto">
                     <label for="department">Department</label>
-                    <select name="department" class="form-select" [(ngModel)]="updatedEmployee.departmentId">
+                    <select name="department" class="form-select" 
+                    formControlName="departmentId" [(ngModel)]="updatedEmployee.departmentId">
                         <option *ngFor="let dep of departments" value={{dep.guid}}>{{dep.departmentName}}</option>
                     </select>
                 </div>
             </div>
 
             <div class="row justify-content-evenly mt-5 mb-5 gy-3 ">
-                <button type="submit" (click)="updateEmployee()"
+                <button type="submit"
                 class="btn btn-warning fw-bold col-sm-4 col-md-3 col-lg-3 col-xl-2">Update Employee</button>
                 <button type="reset" class="btn btn-secondary col-sm-3 col-md-3 col-lg-3 col-xl-2">Reset</button>
                 <a routerLink="" class="btn btn-primary col-sm-3 col-md-3 col-lg-3 col-xl-2">Cancel</a>
