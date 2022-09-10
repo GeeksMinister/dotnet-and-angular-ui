@@ -9,8 +9,8 @@
 
 <div class="container-sm mt-5 fw-bold">
     <div class="col-md-6 col-lg-4">
-        <label for="guid">Id</label>
-        <input name="guid" class="form-control fw-bold" [(ngModel)]="updatedEmployee.guid" disabled/>
+        <label for="guid" class="text-primary">Employee-Id</label>
+        <input name="guid" class="form-control fw-bold text-uppercase" [(ngModel)]="employeeToUpdate.guid" disabled/>
     </div>
     <form [formGroup]="reactiveForm" (ngSubmit)="updateEmployee()" class="w-auto shadow">
         <div class="row card card-body bg-light shadow pb-3 ">
@@ -18,19 +18,19 @@
                 <div class="col-md-6 col-lg-4">
                     <label for="firstName">First Name</label>
                     <input name="firstName" class="form-control" 
-                    formControlName="firstName" [(ngModel)]="updatedEmployee.firstName"/>
+                    formControlName="firstName" [(ngModel)]="employeeToUpdate.firstName"/>
                 </div>
                     
                 <div class="col-md-6 col-lg-4">
                     <label for="lastName">Last Name</label>
                     <input name="lastName" class="form-control" 
-                    formControlName="lastName" [(ngModel)]="updatedEmployee.lastName" />
+                    formControlName="lastName" [(ngModel)]="employeeToUpdate.lastName" />
                 </div>
 
                 <div class="col-auto">
                     <label for="gender">Gender</label>
                     <select name="gender" class="form-select" 
-                    formControlName="gender" [(ngModel)]="updatedEmployee.gender">
+                    formControlName="gender" [(ngModel)]="employeeToUpdate.gender">
                         <option>Male</option>
                         <option>Female</option>
                         <option>Other</option>
@@ -42,19 +42,19 @@
                 <div class="col-md-6 col-lg-4">
                     <label for="email">Email</label>
                     <input name="email" class="form-control" 
-                    formControlName="email" [(ngModel)]="updatedEmployee.email"/>
+                    formControlName="email" [(ngModel)]="employeeToUpdate.email"/>
                 </div>
 
                 <div class="col-md-6 col-lg-4">
                     <label for="phone">Phone</label>
                     <input name="phone" class="form-control" 
-                    formControlName="phone" [(ngModel)]="updatedEmployee.phone"/>
+                    formControlName="phone" [(ngModel)]="employeeToUpdate.phone"/>
                 </div>
 
                 <div class="col-md-6 col-lg-4">
                     <label for="address">Address</label>
                     <input name="address" class="form-control" 
-                    formControlName="address" [(ngModel)]="updatedEmployee.address"/>
+                    formControlName="address" [(ngModel)]="employeeToUpdate.address"/>
                 </div>
             </div>
             
@@ -62,13 +62,13 @@
                 <div class="col-auto">
                     <label for="salary">Salary</label>
                     <input name="salary" type="number" class="form-control" 
-                    formControlName="salary" [(ngModel)]="updatedEmployee.salary"/>
+                    formControlName="salary" [(ngModel)]="employeeToUpdate.salary"/>
                 </div>
 
                 <div class="col-auto">
                     <label for="department">Department</label>
                     <select name="department" class="form-select" 
-                    formControlName="departmentId" [(ngModel)]="updatedEmployee.departmentId">
+                    formControlName="departmentId" [(ngModel)]="employeeToUpdate.departmentId">
                         <option *ngFor="let dep of departments" value={{dep.guid}}>{{dep.departmentName}}</option>
                     </select>
                 </div>

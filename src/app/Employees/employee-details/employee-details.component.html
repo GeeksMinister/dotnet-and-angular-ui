@@ -8,7 +8,7 @@
             <tbody class=" border-dark fw-bold text-center align-middle h5" style="border:solid 2px;">
                 <tr>
                     <th class="table-dark">Id</th>
-                    <td>{{employee.guid}}</td>
+                    <td class="text-uppercase">{{employee.guid}}</td>
                 </tr>
                 <tr class="border-2">
                     <th class="table-dark">First Name</th>
@@ -54,11 +54,11 @@
 </ng-template>
 
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title text-warning m-auto fw-bold" id="exampleModalLabel">Do you want to remove this employee ?</h5>
+          <h5 class="modal-title text-warning m-auto fw-bold" id="deleteModalLabel">Do you want to remove this employee ?</h5>
           <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
         </div>
         <div class="modal-footer border-top-0 row justify-content-evenly">

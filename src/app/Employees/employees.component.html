@@ -6,9 +6,11 @@
       <a routerLink="addEmployee" class="btn btn-success fw-bold">Assgin Employee</a>
     </div>
 </div>
-  
-<em style="color: rgb(0, 123, 255); position: relative; left: 20%; top: 35%;" class="h4" 
-*ngIf="employees === undefined; else loaded">Requesting data ......</em>
+
+<em style=" position: relative; left: 20%; top: 38%;" class="h4"
+[style]="status != 'Requesting data ......' ?
+ 'color: red; font-size: 1rem; left: 2%;' : 'color: rgb(0, 123, 255);'"
+*ngIf="status; else loaded">{{status}}</em>
 
 <ng-template #loaded >
   <em class="h3 m-5 text-danger"*ngIf="employees?.length === 0 else received">
@@ -59,11 +61,11 @@
   </div>
 </ng-template>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div  class="modal-dialog  modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title text-warning m-auto fw-bold" id="exampleModalLabel">Do you want to remove this employee ?</h5>
+        <h5 class="modal-title text-warning m-auto fw-bold" id="deleteModalLabel">Do you want to remove this employee ?</h5>
         <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
       </div>
       <div class="modal-body">
@@ -72,16 +74,16 @@
             <tbody class="border-2 border-secondary fw-bold text-center align-middle  ">
                 <tr class="border-2">
                     <th class="">Id</th>
-                    <td>{{employeeToEdit.guid}}</td>
+                    <td class="text-uppercase small">{{employeeToDelete.guid}}</td>
                 </tr>
                 <tr class="border-2">
                     <th class="">Name</th>
-                    <td>{{getFullName(employeeToEdit)}}</td>
+                    <td>{{getFullName(employeeToDelete)}}</td>
                 </tr>
 
                 <tr class="border-2">
                     <th class="">Department</th>
-                    <td>{{employeeToEdit.department?.departmentName}}</td>
+                    <td>{{employeeToDelete.department?.departmentName}}</td>
                 </tr>
             </tbody>
         </table>
@@ -90,7 +92,7 @@
       <div class="modal-footer border-top-0 row justify-content-evenly">
         <button type="button" class="btn btn-secondary col-auto " data-bs-dismiss="modal">Close</button>
         <button type="button" class="btn btn-danger col-auto " 
-        (click)="deleteEmployee(employeeToEdit)">Confirm</button>
+        (click)="deleteEmployee(employeeToDelete)">Confirm</button>
       </div>
     </div>
   </div>
